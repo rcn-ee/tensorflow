@@ -22,6 +22,7 @@ RUN /update_sources.sh
 RUN apt-get update && \
     apt-get install -y \
       build-essential \
+      cmake \
       software-properties-common \
       zlib1g-dev  \
       curl \
