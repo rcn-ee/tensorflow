@@ -33,7 +33,7 @@ RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
 # Install Python packages.
 RUN dpkg --add-architecture armhf
 RUN dpkg --add-architecture arm64
-RUN yes | add-apt-repository ppa:deadsnakes/ppa
+#RUN yes | add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update && \
     apt-get install -y \
       python$PYTHON_VERSION \
@@ -51,10 +51,10 @@ RUN pip3 install --upgrade pip
 RUN pip3 install numpy~=1.19.2 setuptools pybind11
 RUN ln -sf /usr/include/python$PYTHON_VERSION /usr/include/python3
 RUN ln -sf /usr/local/lib/python$PYTHON_VERSION/dist-packages/numpy/core/include/numpy /usr/include/python3/numpy
-RUN curl -OL https://github.com/Kitware/CMake/releases/download/v3.16.8/cmake-3.16.8-Linux-x86_64.sh
-RUN mkdir /opt/cmake
-RUN sh cmake-3.16.8-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
-RUN ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+#RUN curl -OL https://github.com/Kitware/CMake/releases/download/v3.16.8/cmake-3.16.8-Linux-x86_64.sh
+#RUN mkdir /opt/cmake
+#RUN sh cmake-3.16.8-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
+#RUN ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
 ENV CI_BUILD_PYTHON=python$PYTHON_VERSION
 ENV CROSSTOOL_PYTHON_INCLUDE_PATH=/usr/include/python$PYTHON_VERSION
